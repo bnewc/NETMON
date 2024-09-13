@@ -27,7 +27,7 @@ class HTTP(Service):
         """
         Run HTTP check on stored URL
 
-        :returns:   status of check   
+        :returns:   status of check
         """
         # Add http protocol to URL
         expanded_url = self.url
@@ -57,7 +57,7 @@ class HTTPS(HTTP):
         """
         Run HTTPS check on stored URL
 
-        :returns:   status of check   
+        :returns:   status of check
         """
         # Add https protocol
         expanded_url = self.url
@@ -90,7 +90,7 @@ class ICMP(Service):
         """
         Run ICMP check on stored host
 
-        :returns:   status of check   
+        :returns:   status of check
         """
         try:
             response = ping(self.host, self.ttl, self.timeout, self.sequence_number)
@@ -104,7 +104,7 @@ class ICMP(Service):
             return f"ICMP check -- {self.host} -- reply from {response[0]} received in {response[1]}ms"
         except Exception as e:
             return f"ICMP check -- {self.host} -- Error: {e}"
-        
+
 
 class NTP(Service):
     """NTP service class"""
@@ -117,7 +117,7 @@ class NTP(Service):
         """
         Run NTP check on stored server
 
-        :returns:   status of check   
+        :returns:   status of check
         """
         try:
             response = check_ntp_server(self.server)
@@ -150,7 +150,7 @@ class DNS(NTP):
                 # Check successful
                 return f"DNS check -- {self.server} -- Server is up -- {self.query} resolved to {response[1][0]}"
             # Check failed
-            return f"DNS check -- {self.server} -- Could not resolve {self.query}: {response[1]}"   
+            return f"DNS check -- {self.server} -- Could not resolve {self.query}: {response[1]}"
         except Exception as e:
             return f"DNS check -- {self.server} -- Error: {e}"
 
@@ -167,13 +167,13 @@ class TCP(Service):
         """
         Run TCP check on stored IP and port number
 
-        :returns:   status of check   
+        :returns:   status of check
         """
         try:
             response = check_tcp_port(self.ip_address, self.port)
             return f"TCP check -- {response[1]}"
         except Exception as e:
-            return f"TCP check -- {self.ip_address}:{self.port} -- Error: {e}"       
+            return f"TCP check -- {self.ip_address}:{self.port} -- Error: {e}"
 
 
 class UDP(TCP):
@@ -187,13 +187,13 @@ class UDP(TCP):
         """
         Run UDP check on stored IP and port number
 
-        :returns:   status of check   
+        :returns:   status of check
         """
         try:
             response = check_udp_port(self.ip_address, self.port, self.timeout)
             return f"UDP check -- {response[1]}"
         except Exception as e:
-            return f"UDP check -- {self.ip_address}:{self.port} -- Error: {e}"     
+            return f"UDP check -- {self.ip_address}:{self.port} -- Error: {e}"
 
 
 class Echo(TCP):
@@ -206,7 +206,7 @@ class Echo(TCP):
         """
         Run echo server check
 
-        :returns:   status of check   
+        :returns:   status of check
         """
         try:
             response = check_echo_server(self.ip_address, self.port)
@@ -214,4 +214,4 @@ class Echo(TCP):
                 return f"Echo server check -- {self.ip_address}:{self.port} -- {response[1]}"
             return f"Echo server check -- {self.ip_address}:{self.port} -- {response[1]}"
         except Exception as e:
-            return f"Echo server check -- {self.ip_address}:{self.port} -- Error: {e}"     
+            return f"Echo server check -- {self.ip_address}:{self.port} -- Error: {e}"
