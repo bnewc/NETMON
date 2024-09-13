@@ -11,7 +11,7 @@ Run `NETMON` monitor services on remote hosts to receive and run checks from man
 # Usage
 
 ## Local Host
-- Launch `NETMAN.py`
+- Launch `app/NETMAN.py`
 - Follow the instructions to create or load a JSON configuration. 
 	- If you save a config file, be sure to append .json to the name. 
 	- Configs are stored in the 'configs' folder.
@@ -19,5 +19,5 @@ Run `NETMON` monitor services on remote hosts to receive and run checks from man
 - To stop displaying results, enter command "stop".
 
 ## Remote Hosts
-- Launch an instance of `NETMON.py [port]` with port corresponding to the specified port number in the selected `NETMAN` config file.
+- Launch an instance of `app/NETMON.py [port]` with port corresponding to the specified port number in the selected `NETMAN` config file.
 - To stop running checks, enter command "stop".
