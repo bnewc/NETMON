@@ -1,0 +1,4 @@
+- To run the application:
+	- Launch `NETMAN.py` and follow the instructions to create, save, and/or load a JSON configuration. If you save a config file, be sure to append .json to the name. Configs are stored in the 'configs' folder.
+	- Launch an instance of `NETMON.py [port]` with port corresponding to the specified port number in the selected `NETMAN` config file.
+	- To stop either application, simply enter the command "stop".
